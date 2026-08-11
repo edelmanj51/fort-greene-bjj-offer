@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{BOOK_PAGE_TITLE}} | {{SCHOOL_NAME}}</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{META_PIXEL_ID}}');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id={{META_PIXEL_ID}}&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- GOOGLE ANALYTICS: INSERT GA4 ID HERE -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    /* ── NO-LEAD BANNER ── */
+    .no-lead-banner {
+      background: #FFD700;
+      color: #1a1a1a;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .no-lead-banner a {
+      color: #1a1a1a;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 480px;
+      margin: 0 auto;
+      padding-top: 0;
+    }
+
+    .content-pad {
+      padding: 36px 16px 20px;
+      text-align: center;
+    }
+
+    .content-pad h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #FFD700;
+      line-height: 1.2;
+    }
+
+    .sub-text {
+      color: #ccc;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── CALENDAR ── */
+    .calendar-wrap {
+      padding: 0;
+    }
+
+    .calendar-wrap iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- No-lead data banner -->
+  <div class="no-lead-banner" id="noLeadBanner">
+    Complete the form on our main page to reserve your spot — <a href="index.html">click here to go back</a>
+  </div>
+
+  <!-- Main content -->
+  <div class="main" id="mainContent">
+    <div class="content-pad">
+      <h2>{{BOOK_HEADLINE}}</h2>
+      <p class="sub-text">{{BOOK_SUBTEXT}}</p>
+    </div>
+
+    <div class="calendar-wrap">
+      <iframe
+        id="ghl-calendar"
+        src=""
+        frameborder="0"
+        allowtransparency="true"
+        title="{{BOOK_HEADLINE}}"
+      ></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var lead = JSON.parse(sessionStorage.getItem('leadData') || '{}');
+
+      // No-lead banner
+      if (!lead.firstName) {
+        document.getElementById('noLeadBanner').style.display = 'block';
+      }
+
+      // Pre-populate GHL calendar via query params
+      var base = '{{BOOKING_CALENDAR_URL}}';
+      var params = new URLSearchParams({
+        first_name: lead.firstName || '',
+        last_name:  lead.lastName  || '',
+        phone:      lead.phone     || ''
+      });
+      document.getElementById('ghl-calendar').src = base + '?' + params.toString();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+SCHOOL_NAME: "Fort Greene BJJ"
+ADDRESS: "412 Myrtle Ave, Brooklyn, NY 11205"
+
+OFFER_HEADLINE_SHORT: "Free 1-Week Pass"
+
+# Fort Greene BJJ genuinely serves both kids and adults (BJJ + Muay Thai),
+# unlike Fishhawk/Kick It's kids-only framing, so headline says "Kids &
+# Adults" rather than dropping the adult audience — flagged for confirmation.
+OFFER_HEADLINE: "Free 1-Week Pass for Kids & Adults in Fort Greene!"
+OFFER_SUBHEAD: "Limited Vouchers Available — Reserve Yours Today"
+
+PHONE_FLAG_EMOJI: "🇺🇸"
+PHONE_COUNTRY_CODE: "+1"
+
+FORM_BUTTON_TEXT: "Claim Your Free Week!"
+
+# Fort Greene BJJ's own site credits "The Fort Greene BJJ Coaching Team"
+# rather than a single head instructor, so this says "coaching team"
+# instead of Fishhawk/Kick It's "I'm the head instructor" line.
+BODY_GREETING: "Hey Fort Greene!"
+BODY_COPY: "We're the coaching team at Fort Greene BJJ and we want to personally invite you to experience Brazilian Jiu-Jitsu and Muay Thai firsthand. We only have 8 vouchers left for our Free 1-Week Pass — complete with expert instruction, a supportive community, and real self-defense skills you'll build for life."
+CALLOUT_TEXT: "⚡ Only 8 vouchers remaining — don't miss out."
+
+# Social proof section — real 5.0/8-review numbers already confirmed by the
+# client and live on the main Fort Greene BJJ site.
+SOCIAL_PROOF_HEADLINE: "Here's what other Fort Greene members had to say..."
+STAR_RATING: "5.0"
+REVIEW_COUNT: "8"
+
+# Reusing 3 of the same approved testimonials already live on the main
+# Fort Greene BJJ site (one kids, one adult, one parent-of-two) rather than
+# writing new ones, to keep voice/claims consistent across both pages.
+REVIEWER_1_NAME: "Parent of a 9-Year-Old"
+REVIEWER_1_DATE: "Fort Greene"
+REVIEWER_1_TEXT: "My son was struggling with confidence and focus. After six months here, his teachers noticed a difference — and so did we. He walks taller now."
+
+REVIEWER_2_NAME: "Adult Student, 18 Months In"
+REVIEWER_2_DATE: "Clinton Hill"
+REVIEWER_2_TEXT: "I started at 42 with zero athletic background. The instructors made me feel welcome from day one. Best decision I've made for my health in years."
+
+REVIEWER_3_NAME: "Parent of Two Students"
+REVIEWER_3_DATE: "Bed-Stuy"
+REVIEWER_3_TEXT: "The kids program is the real deal. Structure, discipline, and actual martial arts — not just games with a belt at the end. My daughter earned every stripe."
+
+SECOND_CTA_BUTTON: "Reserve Your Voucher Now!"
+
+BOOK_PAGE_TITLE: "Book Your First Class"
+BOOK_HEADLINE: "Time For The MOST IMPORTANT Step..."
+BOOK_SUBTEXT: "We've ONLY Got 8 Vouchers Left! Schedule Your First Class Below And We'll Reserve Your Spot!"
+
+# ── Integrations — NOT SET, need real values before this goes live ─────────
+# No Meta Pixel ID or GHL webhook/calendar URLs have been provided yet for
+# this landing page specifically (the main Fort Greene BJJ site also still
+# has placeholders for these). Obviously-fake placeholders on purpose.
+META_PIXEL_ID: "PLACEHOLDER-META-PIXEL-ID"
+TRIAL_WEBHOOK_URL: "https://PLACEHOLDER-replace-before-build"
+BOOKING_CALENDAR_URL: "https://PLACEHOLDER-replace-before-build"
+
+HERO_IMAGE_FILE: "hero.jpg"

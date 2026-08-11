@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{OFFER_HEADLINE_SHORT}} | {{SCHOOL_NAME}}</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{META_PIXEL_ID}}');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id={{META_PIXEL_ID}}&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- GOOGLE ANALYTICS: INSERT GA4 ID HERE -->
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: #1a1a1a url('hero.jpg') center/cover no-repeat;
+      position: relative;
+      padding: 32px 0 28px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    .school-name {
+      color: #FFD700;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero-sub {
+      color: #bbb;
+      font-size: 16px;
+      margin-bottom: 26px;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .cd-unit {
+      text-align: center;
+      min-width: 72px;
+    }
+
+    .cd-num {
+      display: block;
+      font-size: 52px;
+      font-weight: 800;
+      color: #FFD700;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -1px;
+    }
+
+    .cd-label {
+      display: block;
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 5px;
+    }
+
+    .cd-sep {
+      font-size: 46px;
+      font-weight: 800;
+      color: #FFD700;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    /* ── LEAD FORM ── */
+    .lead-form {
+      background: #222;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row .fg {
+      flex: 1;
+    }
+
+    .fg {
+      margin-bottom: 12px;
+    }
+
+    .fg input {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .fg input:focus { border-color: #FFD700; }
+    .fg input.error { border-color: #ff4444 !important; }
+    .fg input::placeholder { color: #555; }
+
+    /* Phone */
+    .phone-wrap {
+      display: flex;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: #1a1a1a;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .phone-wrap:focus-within { border-color: #FFD700; }
+    .phone-wrap.error { border-color: #ff4444 !important; }
+
+    .phone-flag {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 14px;
+      background: #252525;
+      border-right: 1px solid #333;
+      color: #ccc;
+      font-size: 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .phone-flag span { font-size: 18px; }
+
+    .phone-wrap input {
+      flex: 1;
+      padding: 14px 14px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      min-width: 0;
+      -webkit-appearance: none;
+    }
+
+    .phone-wrap input::placeholder { color: #555; }
+
+    .phone-error {
+      color: #ff6666;
+      font-size: 12px;
+      margin-top: 5px;
+      text-align: left;
+      display: none;
+    }
+
+    .phone-error.show { display: block; }
+
+    /* SMS consent */
+    .sms-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      margin-top: 4px;
+    }
+
+    .sms-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 1px;
+      accent-color: #FFD700;
+      cursor: pointer;
+    }
+
+    .sms-row label {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    .sms-row.error label { color: #ff8888; }
+
+    .btn-cta {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: #FFD700;
+      color: #1a1a1a;
+      font-size: 17px;
+      font-weight: 800;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, transform 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-cta:hover { background: #f5ce00; }
+    .btn-cta:active { transform: scale(0.98); }
+
+    .form-error {
+      color: #ff6666;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .form-error.show { display: block; }
+
+    /* ── BODY COPY ── */
+    .body-copy {
+      background: #1a1a1a;
+      padding: 44px 0;
+    }
+
+    .body-copy h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .body-copy p {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    .callout-box {
+      background: #FFD700;
+      color: #1a1a1a;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .callout-box:hover { background: #f5ce00; }
+
+    .callout-box small {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 6px;
+      opacity: 0.75;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      background: #242424;
+      padding: 44px 0;
+    }
+
+    .sp-sub {
+      color: #FFD700;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .social-proof h2 {
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .star-rating {
+      text-align: center;
+      font-size: 15px;
+      color: #FFD700;
+      margin-bottom: 26px;
+    }
+
+    .review-card {
+      background: #FFD700;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .review-card:last-child { margin-bottom: 0; }
+
+    .rc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .rc-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .rc-time {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .rc-stars {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .rc-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #1a1a1a;
+    }
+
+    /* ── SECOND CTA ── */
+    .second-cta {
+      background: #1a1a1a;
+      padding: 44px 0;
+      text-align: center;
+    }
+
+    .second-cta h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 26px;
+      color: #fff;
+    }
+
+    .second-cta .countdown {
+      margin-bottom: 28px;
+    }
+
+    .address-line {
+      color: #888;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="school-name">{{SCHOOL_NAME}}</p>
+      <h1>{{OFFER_HEADLINE}}</h1>
+      <p class="hero-sub">{{OFFER_SUBHEAD}}</p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-h1">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-m1">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-s1">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <!-- Lead Form -->
+      <form class="lead-form" id="lead-form" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <input type="text" id="firstName" placeholder="First Name" autocomplete="given-name" required>
+          </div>
+          <div class="fg">
+            <input type="text" id="lastName" placeholder="Last Name" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="phone-wrap" id="phoneWrap">
+            <div class="phone-flag"><span>{{PHONE_FLAG_EMOJI}}</span> {{PHONE_COUNTRY_CODE}}</div>
+            <input type="tel" id="phone" placeholder="(555) 000-0000" autocomplete="tel" required>
+          </div>
+          <p class="phone-error" id="phoneError">Please enter a valid 10-digit phone number.</p>
+        </div>
+        <div class="sms-row" id="smsRow">
+          <input type="checkbox" id="smsConsent">
+          <label for="smsConsent">By providing your phone number, you agree to receive text messages from {{SCHOOL_NAME}}. Message and data rates may apply. Message frequency varies.</label>
+        </div>
+        <button type="submit" class="btn-cta">{{FORM_BUTTON_TEXT}}</button>
+        <p class="form-error" id="formError">Please complete all fields and accept the SMS consent.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══ BODY COPY ═══ -->
+  <section class="body-copy">
+    <div class="wrap">
+      <h2>{{BODY_GREETING}}</h2>
+      <p>{{BODY_COPY}}</p>
+      <div class="callout-box" onclick="scrollToForm()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')scrollToForm()">
+        {{CALLOUT_TEXT}}
+        <small>👆 Click to claim yours</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOCIAL PROOF ═══ -->
+  <section class="social-proof">
+    <div class="wrap">
+      <p class="sp-sub">But don't just take our word for it.</p>
+      <h2>{{SOCIAL_PROOF_HEADLINE}}</h2>
+      <p class="star-rating">{{STAR_RATING}} ⭐⭐⭐⭐⭐ | {{REVIEW_COUNT}} reviews</p>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">{{REVIEWER_1_NAME}}</span>
+          <span class="rc-time">{{REVIEWER_1_DATE}}</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"{{REVIEWER_1_TEXT}}"</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">{{REVIEWER_2_NAME}}</span>
+          <span class="rc-time">{{REVIEWER_2_DATE}}</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"{{REVIEWER_2_TEXT}}"</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">{{REVIEWER_3_NAME}}</span>
+          <span class="rc-time">{{REVIEWER_3_DATE}}</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"{{REVIEWER_3_TEXT}}"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECOND CTA ═══ -->
+  <section class="second-cta">
+    <div class="wrap">
+      <h2>Ready to Get Started?</h2>
+
+      <!-- Countdown Timer (same instance) -->
+      <div class="countdown">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-h2">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-m2">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-s2">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <button class="btn-cta" onclick="scrollToForm()">{{SECOND_CTA_BUTTON}}</button>
+      <p class="address-line">📍 {{ADDRESS}}</p>
+    </div>
+  </section>
+
+  <script>
+    /* ── COUNTDOWN TIMER (counts to 11:59:59pm local time, auto-resets at midnight) ── */
+    (function () {
+      function getMidnight() {
+        var now = new Date();
+        var t = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        if (now.getTime() >= t.getTime()) {
+          t = new Date(t.getTime() + 86400000);
+        }
+        return t.getTime();
+      }
+
+      var target = getMidnight();
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function set(id, val) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+
+      function tick() {
+        var rem = target - Date.now();
+        if (rem <= 0) {
+          target = getMidnight();
+          rem = target - Date.now();
+        }
+        var h = Math.floor(rem / 3600000);
+        var m = Math.floor((rem % 3600000) / 60000);
+        var s = Math.floor((rem % 60000) / 1000);
+        var hh = pad(h), mm = pad(m), ss = pad(s);
+        set('cd-h1', hh); set('cd-m1', mm); set('cd-s1', ss);
+        set('cd-h2', hh); set('cd-m2', mm); set('cd-s2', ss);
+        setTimeout(tick, 1000);
+      }
+
+      tick();
+    })();
+
+    /* ── PHONE AUTO-FORMAT ── */
+    document.getElementById('phone').addEventListener('input', function () {
+      var digits = this.value.replace(/\D/g, '').slice(0, 10);
+      var out = '';
+      if (digits.length === 0) {
+        out = '';
+      } else if (digits.length <= 3) {
+        out = '(' + digits;
+      } else if (digits.length <= 6) {
+        out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+      } else {
+        out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+      }
+      this.value = out;
+      // clear error while user is typing
+      document.getElementById('phoneWrap').classList.remove('error');
+      document.getElementById('phoneError').classList.remove('show');
+    });
+
+    /* ── FORM VALIDATION & SUBMIT ── */
+    document.getElementById('lead-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      var fn = document.getElementById('firstName');
+      var ln = document.getElementById('lastName');
+      var ph = document.getElementById('phone');
+      var pw = document.getElementById('phoneWrap');
+      var pe = document.getElementById('phoneError');
+      var sm = document.getElementById('smsConsent');
+      var sr = document.getElementById('smsRow');
+      var er = document.getElementById('formError');
+
+      // reset
+      [fn, ln].forEach(function (f) { f.classList.remove('error'); });
+      pw.classList.remove('error');
+      pe.classList.remove('show');
+      sr.classList.remove('error');
+      er.classList.remove('show');
+
+      var ok = true;
+
+      if (!fn.value.trim()) { fn.classList.add('error'); ok = false; }
+      if (!ln.value.trim()) { ln.classList.add('error'); ok = false; }
+
+      var phoneDigits = ph.value.replace(/\D/g, '');
+      if (phoneDigits.length !== 10) {
+        pw.classList.add('error');
+        pe.classList.add('show');
+        ok = false;
+      }
+
+      if (!sm.checked) { sr.classList.add('error'); ok = false; }
+
+      if (!ok) {
+        if (!fn.value.trim() || !ln.value.trim() || !sm.checked) {
+          er.classList.add('show');
+        }
+        return;
+      }
+
+      sessionStorage.setItem('leadData', JSON.stringify({
+        firstName: fn.value.trim(),
+        lastName:  ln.value.trim(),
+        phone:     phoneDigits
+      }));
+
+      try {
+        await fetch('{{TRIAL_WEBHOOK_URL}}', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            first_name: fn.value.trim(),
+            last_name:  ln.value.trim(),
+            phone:      phoneDigits,
+            source:     '{{SCHOOL_NAME}} Landing Page'
+          })
+        });
+      } catch (e) {}
+
+      window.location.href = 'book.html';
+    });
+
+    /* ── SCROLL TO FORM ── */
+    function scrollToForm() {
+      document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
