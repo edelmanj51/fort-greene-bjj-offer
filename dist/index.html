@@ -22,6 +22,15 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
   <!-- GOOGLE ANALYTICS: INSERT GA4 ID HERE -->
+  <!-- GOOGLE ADS CONVERSION TRACKING: Insert the base gtag.js snippet here
+       once you have it from Google Ads (Tools > Conversions > your
+       conversion action > "Use Google tag directly on your website"). This
+       base snippet (loads gtag.js + `gtag('config', 'AW-XXXXXXXXX')`) goes
+       on EVERY page — this landing page AND thank-you.html both need it.
+       The separate per-conversion EVENT snippet (`gtag('event', 'conversion', {...})`)
+       does NOT go here — it only goes on thank-you.html, fired on page load
+       there, since that's the page a visitor only reaches after submitting
+       the form (see the matching placeholder comment in thank-you.html). -->
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -268,6 +277,7 @@
         </div>
         <button type="submit" class="btn-cta">Claim Your Free Week!</button>
         <p class="form-error" id="formError">Please complete all fields and accept the SMS consent.</p>
+        <p class="form-error" id="networkError">Something went wrong submitting your info. Please try again, or call us directly at <a href="tel:9179090151" style="color:#fff;text-decoration:underline">(917) 909-0151</a>.</p>
       </form>
 
       <p class="address-line">📍 412 Myrtle Ave, Brooklyn, NY 11205</p>
@@ -298,13 +308,15 @@
     document.getElementById('lead-form').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      var nm = document.getElementById('fullName');
-      var ph = document.getElementById('phone');
-      var pw = document.getElementById('phoneWrap');
-      var pe = document.getElementById('phoneError');
-      var sm = document.getElementById('smsConsent');
-      var sr = document.getElementById('smsRow');
-      var er = document.getElementById('formError');
+      var nm  = document.getElementById('fullName');
+      var ph  = document.getElementById('phone');
+      var pw  = document.getElementById('phoneWrap');
+      var pe  = document.getElementById('phoneError');
+      var sm  = document.getElementById('smsConsent');
+      var sr  = document.getElementById('smsRow');
+      var er  = document.getElementById('formError');
+      var ne  = document.getElementById('networkError');
+      var btn = this.querySelector('.btn-cta');
 
       // reset
       nm.classList.remove('error');
@@ -312,6 +324,7 @@
       pe.classList.remove('show');
       sr.classList.remove('error');
       er.classList.remove('show');
+      ne.classList.remove('show');
 
       var ok = true;
 
@@ -333,20 +346,18 @@
         return;
       }
 
-      // Split "Full Name" into first/last — book.html's calendar prefill and
-      // the webhook payload both still expect separate first_name/last_name.
+      // Split "Full Name" into first/last — the webhook payload expects
+      // separate first_name/last_name fields.
       var nameParts = nm.value.trim().split(/\s+/);
       var firstName = nameParts[0] || '';
       var lastName  = nameParts.slice(1).join(' ') || '';
 
-      sessionStorage.setItem('leadData', JSON.stringify({
-        firstName: firstName,
-        lastName:  lastName,
-        phone:     phoneDigits
-      }));
+      var originalBtnText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
 
       try {
-        await fetch('https://PLACEHOLDER-replace-before-build', {
+        await fetch('https://services.leadconnectorhq.com/hooks/pKFQSaqBDogSS5Qznp15/webhook-trigger/mCRDvb35Yeh80mcVQfoH', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -356,9 +367,17 @@
             source:     'Fort Greene BJJ Landing Page'
           })
         });
-      } catch (e) {}
-
-      window.location.href = 'book.html';
+        // The webhook doesn't return anything useful — as long as the
+        // request completed (regardless of status code), treat it as a
+        // success and move on.
+        window.location.href = '/thank-you';
+      } catch (networkErr) {
+        // Genuine network failure (offline, DNS, CORS, etc.) — don't
+        // redirect, since we can't be sure the lead was ever captured.
+        btn.textContent = originalBtnText;
+        btn.disabled = false;
+        ne.classList.add('show');
+      }
     });
   </script>
 </body>

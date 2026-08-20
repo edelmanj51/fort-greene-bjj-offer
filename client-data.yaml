@@ -1,5 +1,7 @@
 SCHOOL_NAME: "Fort Greene BJJ"
 ADDRESS: "412 Myrtle Ave, Brooklyn, NY 11205"
+PHONE: "(917) 909-0151"
+PHONE_TEL: "9179090151"
 
 OFFER_HEADLINE_SHORT: "Free 1-Week Pass"
 
@@ -19,12 +21,16 @@ BOOK_HEADLINE: "Schedule Your First Class"
 # No urgency/scarcity language here either (dropped "ONLY 8 Vouchers Left").
 BOOK_SUBTEXT: "Pick a time that works for you and we'll get you booked in."
 
-# ── Integrations — NOT SET, need real values before this goes live ─────────
-# No Meta Pixel ID or GHL webhook/calendar URLs have been provided yet for
-# this landing page specifically (the main Fort Greene BJJ site also still
-# has placeholders for these). Obviously-fake placeholders on purpose.
+# ── Integrations ─────────────────────────────────────────────────────────
+# No Meta Pixel ID provided yet for this landing page specifically —
+# obviously-fake placeholder on purpose.
 META_PIXEL_ID: "PLACEHOLDER-META-PIXEL-ID"
-TRIAL_WEBHOOK_URL: "https://PLACEHOLDER-replace-before-build"
+# Real GHL webhook for this landing page specifically (distinct from the
+# main fort-greene-bjj site's webhook — separate tracking/attribution).
+TRIAL_WEBHOOK_URL: "https://services.leadconnectorhq.com/hooks/pKFQSaqBDogSS5Qznp15/webhook-trigger/mCRDvb35Yeh80mcVQfoH"
+# No longer used by index.html (which now redirects to /thank-you instead
+# of book.html) — left set since book.html still references it and still
+# works standalone if ever linked to again.
 BOOKING_CALENDAR_URL: "https://api.leadconnectorhq.com/widget/group/LVz9Dko6Yy4jzIWduD98"
 
 HERO_IMAGE_FILE: "hero.jpg"

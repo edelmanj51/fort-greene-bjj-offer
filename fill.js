@@ -33,7 +33,7 @@ function fill(html) {
 
 if (!fs.existsSync('dist')) fs.mkdirSync('dist');
 
-for (const file of ['index.html', 'book.html']) {
+for (const file of ['index.html', 'book.html', 'thank-you.html']) {
   let html = fs.readFileSync(file, 'utf8');
   html = fill(html);
 
