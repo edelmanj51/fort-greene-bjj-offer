@@ -26,11 +26,13 @@
        once you have it from Google Ads (Tools > Conversions > your
        conversion action > "Use Google tag directly on your website"). This
        base snippet (loads gtag.js + `gtag('config', 'AW-XXXXXXXXX')`) goes
-       on EVERY page — this landing page AND thank-you.html both need it.
-       The separate per-conversion EVENT snippet (`gtag('event', 'conversion', {...})`)
-       does NOT go here — it only goes on thank-you.html, fired on page load
-       there, since that's the page a visitor only reaches after submitting
-       the form (see the matching placeholder comment in thank-you.html). -->
+       on EVERY page — this landing page AND /free-week-schedule.html both
+       need it. The separate per-conversion EVENT snippet
+       (`gtag('event', 'conversion', {...})`) does NOT go here — it only goes
+       on /free-week-schedule.html, fired on page load there, since that's
+       the unique confirmation URL a visitor only reaches after submitting
+       this specific landing page's form (see the matching placeholder
+       comment in free-week-schedule.html). -->
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -248,6 +250,178 @@
       margin-top: 20px;
       text-align: center;
     }
+
+    /* ── COUNTDOWN ── */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .cd-unit {
+      text-align: center;
+      min-width: 72px;
+    }
+
+    .cd-num {
+      display: block;
+      font-size: 52px;
+      font-weight: 800;
+      color: #FFD700;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -1px;
+    }
+
+    .cd-label {
+      display: block;
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 5px;
+    }
+
+    .cd-sep {
+      font-size: 46px;
+      font-weight: 800;
+      color: #FFD700;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    /* ── BODY COPY ── */
+    .body-copy {
+      background: #1a1a1a;
+      padding: 44px 0;
+    }
+
+    .body-copy h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .body-copy p {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    .callout-box {
+      background: #FFD700;
+      color: #1a1a1a;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .callout-box:hover { background: #f5ce00; }
+
+    .callout-box small {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 6px;
+      opacity: 0.75;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      background: #242424;
+      padding: 44px 0;
+    }
+
+    .sp-sub {
+      color: #FFD700;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .social-proof h2 {
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .star-rating {
+      text-align: center;
+      font-size: 15px;
+      color: #FFD700;
+      margin-bottom: 26px;
+    }
+
+    .review-card {
+      background: #FFD700;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .review-card:last-child { margin-bottom: 0; }
+
+    .rc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .rc-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .rc-time {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .rc-stars {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .rc-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #1a1a1a;
+    }
+
+    /* ── SECOND CTA ── */
+    .second-cta {
+      background: #1a1a1a;
+      padding: 44px 0;
+      text-align: center;
+    }
+
+    .second-cta h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 26px;
+      color: #fff;
+    }
+
+    .second-cta .countdown {
+      margin-bottom: 28px;
+    }
   </style>
 </head>
 <body>
@@ -258,6 +432,24 @@
       <p class="school-name">Fort Greene BJJ</p>
       <h1>Free 1-Week Pass for Kids & Adults in Fort Greene!</h1>
       <p class="hero-sub">Fill out the form below and we'll reach out to get you started.</p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-h1">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-m1">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-s1">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
 
       <!-- Lead Form -->
       <form class="lead-form" id="lead-form" novalidate>
@@ -279,10 +471,129 @@
         <p class="form-error" id="formError">Please complete all fields and accept the SMS consent.</p>
         <p class="form-error" id="networkError">Something went wrong submitting your info. Please try again, or call us directly at <a href="tel:9179090151" style="color:#fff;text-decoration:underline">(917) 909-0151</a>.</p>
       </form>
+    </div>
+  </section>
 
+  <!-- ═══ BODY COPY ═══ -->
+  <section class="body-copy">
+    <div class="wrap">
+      <h2>Hey Fort Greene!</h2>
+      <p>We're the coaching team at Fort Greene BJJ and we want to personally invite you to experience Brazilian Jiu-Jitsu and Muay Thai firsthand. We only have 8 vouchers left for our Free 1-Week Pass — complete with expert instruction, a supportive community, and real self-defense skills you'll build for life.</p>
+      <div class="callout-box" onclick="scrollToForm()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')scrollToForm()">
+        ⚡ Only 8 vouchers remaining — don't miss out.
+        <small>👆 Click to claim yours</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOCIAL PROOF ═══ -->
+  <section class="social-proof">
+    <div class="wrap">
+      <p class="sp-sub">But don't just take our word for it.</p>
+      <h2>Here's what other Fort Greene members had to say...</h2>
+      <p class="star-rating">5.0 ⭐⭐⭐⭐⭐ | 8 reviews</p>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">Parent of a 9-Year-Old</span>
+          <span class="rc-time">Fort Greene</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"My son was struggling with confidence and focus. After six months here, his teachers noticed a difference — and so did we. He walks taller now."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">Adult Student, 18 Months In</span>
+          <span class="rc-time">Clinton Hill</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"I started at 42 with zero athletic background. The instructors made me feel welcome from day one. Best decision I've made for my health in years."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="rc-header">
+          <span class="rc-name">Parent of Two Students</span>
+          <span class="rc-time">Bed-Stuy</span>
+        </div>
+        <div class="rc-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rc-text">"The kids program is the real deal. Structure, discipline, and actual martial arts — not just games with a belt at the end. My daughter earned every stripe."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECOND CTA ═══ -->
+  <section class="second-cta">
+    <div class="wrap">
+      <h2>Ready to Get Started?</h2>
+
+      <!-- Countdown Timer (same instance) -->
+      <div class="countdown">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-h2">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-m2">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-s2">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <button class="btn-cta" onclick="scrollToForm()">Reserve Your Voucher Now!</button>
       <p class="address-line">📍 412 Myrtle Ave, Brooklyn, NY 11205</p>
     </div>
   </section>
+
+  <script>
+    /* ── COUNTDOWN TIMER (counts to 11:59:59pm local time, auto-resets at midnight) ── */
+    (function () {
+      function getMidnight() {
+        var now = new Date();
+        var t = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        if (now.getTime() >= t.getTime()) {
+          t = new Date(t.getTime() + 86400000);
+        }
+        return t.getTime();
+      }
+
+      var target = getMidnight();
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function set(id, val) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+
+      function tick() {
+        var rem = target - Date.now();
+        if (rem <= 0) {
+          target = getMidnight();
+          rem = target - Date.now();
+        }
+        var h = Math.floor(rem / 3600000);
+        var m = Math.floor((rem % 3600000) / 60000);
+        var s = Math.floor((rem % 60000) / 1000);
+        var hh = pad(h), mm = pad(m), ss = pad(s);
+        set('cd-h1', hh); set('cd-m1', mm); set('cd-s1', ss);
+        set('cd-h2', hh); set('cd-m2', mm); set('cd-s2', ss);
+        setTimeout(tick, 1000);
+      }
+
+      tick();
+    })();
+
+    /* ── SCROLL TO FORM ── */
+    function scrollToForm() {
+      document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
 
   <script>
     /* ── PHONE AUTO-FORMAT ── */
@@ -346,11 +657,22 @@
         return;
       }
 
-      // Split "Full Name" into first/last — the webhook payload expects
-      // separate first_name/last_name fields.
-      var nameParts = nm.value.trim().split(/\s+/);
+      var fullName = nm.value.trim();
+
+      // Split "Full Name" into first/last for sessionStorage ONLY — that's
+      // used purely to pre-fill the GHL calendar's own first_name/last_name
+      // query params on free-week-schedule.html (same mechanism book.html
+      // already used). The webhook itself gets the name as a single field;
+      // GHL splits it into first/last automatically on their end, so we
+      // don't do it ourselves for the webhook payload.
+      var nameParts = fullName.split(/\s+/);
       var firstName = nameParts[0] || '';
       var lastName  = nameParts.slice(1).join(' ') || '';
+      sessionStorage.setItem('leadData', JSON.stringify({
+        firstName: firstName,
+        lastName:  lastName,
+        phone:     phoneDigits
+      }));
 
       var originalBtnText = btn.textContent;
       btn.textContent = 'Sending…';
@@ -361,16 +683,17 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            first_name: firstName,
-            last_name:  lastName,
-            phone:      phoneDigits,
-            source:     'Fort Greene BJJ Landing Page'
+            name:   fullName,
+            phone:  phoneDigits,
+            source: 'Fort Greene BJJ Landing Page'
           })
         });
         // The webhook doesn't return anything useful — as long as the
         // request completed (regardless of status code), treat it as a
-        // success and move on.
-        window.location.href = '/thank-you';
+        // success and move on. Redirects to a page unique to this funnel
+        // (not the shared book.html) so Google Ads conversion tracking only
+        // fires for leads that actually came through this landing page.
+        window.location.href = '/free-week-schedule.html';
       } catch (networkErr) {
         // Genuine network failure (offline, DNS, CORS, etc.) — don't
         // redirect, since we can't be sure the lead was ever captured.
