@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17641751892"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17641751892');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Dedicated, unlinked confirmation URL for this landing page's funnel
@@ -27,17 +36,16 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
   <!-- GOOGLE ANALYTICS: INSERT GA4 ID HERE -->
-  <!-- GOOGLE ADS CONVERSION TRACKING: Insert the base gtag.js snippet here
-       too (same one as index.html — loads gtag.js + `gtag('config', 'AW-XXXXXXXXX')`).
-       Then ALSO ADD the per-conversion EVENT snippet here (and ONLY here,
-       not on index.html or book.html):
-       `gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/YYYYYYYYYY'});`
+  <!-- Google tag (AW-17641751892) installed above. STILL NEEDED: the
+       per-conversion EVENT snippet, e.g.
+       `gtag('event', 'conversion', {'send_to': 'AW-17641751892/YYYYYYYYYY'});`
+       — add it here, and ONLY here (not index.html, not book.html), once
+       the conversion action's label (the YYYYYYYYYY part) is available.
        This page is the unique, unlinked confirmation URL for this specific
        landing page's funnel — a visitor only lands here after submitting
        that form — so firing the conversion event on page load here counts
        a lead as a conversion without picking up traffic from book.html's
-       other, unrelated funnels. Get both snippets from Google Ads >
-       Tools > Conversions > your conversion action > "Google tag". -->
+       other, unrelated funnels. -->
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 

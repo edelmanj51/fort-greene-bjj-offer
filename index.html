@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17641751892"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17641751892');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{OFFER_HEADLINE_SHORT}} | {{SCHOOL_NAME}}</title>
@@ -22,17 +31,10 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
   <!-- GOOGLE ANALYTICS: INSERT GA4 ID HERE -->
-  <!-- GOOGLE ADS CONVERSION TRACKING: Insert the base gtag.js snippet here
-       once you have it from Google Ads (Tools > Conversions > your
-       conversion action > "Use Google tag directly on your website"). This
-       base snippet (loads gtag.js + `gtag('config', 'AW-XXXXXXXXX')`) goes
-       on EVERY page — this landing page AND /free-week-schedule.html both
-       need it. The separate per-conversion EVENT snippet
-       (`gtag('event', 'conversion', {...})`) does NOT go here — it only goes
-       on /free-week-schedule.html, fired on page load there, since that's
-       the unique confirmation URL a visitor only reaches after submitting
-       this specific landing page's form (see the matching placeholder
-       comment in free-week-schedule.html). -->
+  <!-- Google tag (AW-17641751892) installed above, immediately after <head>,
+       per Google's own instructions. The per-conversion EVENT snippet still
+       needs to be added — but only to /free-week-schedule.html, not here
+       (see that file's <head> for the matching note). -->
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
