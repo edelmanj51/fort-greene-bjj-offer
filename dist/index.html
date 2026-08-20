@@ -252,13 +252,8 @@
 
       <!-- Lead Form -->
       <form class="lead-form" id="lead-form" novalidate>
-        <div class="form-row">
-          <div class="fg">
-            <input type="text" id="firstName" placeholder="First Name" autocomplete="given-name" required>
-          </div>
-          <div class="fg">
-            <input type="text" id="lastName" placeholder="Last Name" autocomplete="family-name" required>
-          </div>
+        <div class="fg">
+          <input type="text" id="fullName" placeholder="Full Name" autocomplete="name" required>
         </div>
         <div class="fg">
           <div class="phone-wrap" id="phoneWrap">
@@ -303,8 +298,7 @@
     document.getElementById('lead-form').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      var fn = document.getElementById('firstName');
-      var ln = document.getElementById('lastName');
+      var nm = document.getElementById('fullName');
       var ph = document.getElementById('phone');
       var pw = document.getElementById('phoneWrap');
       var pe = document.getElementById('phoneError');
@@ -313,7 +307,7 @@
       var er = document.getElementById('formError');
 
       // reset
-      [fn, ln].forEach(function (f) { f.classList.remove('error'); });
+      nm.classList.remove('error');
       pw.classList.remove('error');
       pe.classList.remove('show');
       sr.classList.remove('error');
@@ -321,8 +315,7 @@
 
       var ok = true;
 
-      if (!fn.value.trim()) { fn.classList.add('error'); ok = false; }
-      if (!ln.value.trim()) { ln.classList.add('error'); ok = false; }
+      if (!nm.value.trim()) { nm.classList.add('error'); ok = false; }
 
       var phoneDigits = ph.value.replace(/\D/g, '');
       if (phoneDigits.length !== 10) {
@@ -334,15 +327,21 @@
       if (!sm.checked) { sr.classList.add('error'); ok = false; }
 
       if (!ok) {
-        if (!fn.value.trim() || !ln.value.trim() || !sm.checked) {
+        if (!nm.value.trim() || !sm.checked) {
           er.classList.add('show');
         }
         return;
       }
 
+      // Split "Full Name" into first/last — book.html's calendar prefill and
+      // the webhook payload both still expect separate first_name/last_name.
+      var nameParts = nm.value.trim().split(/\s+/);
+      var firstName = nameParts[0] || '';
+      var lastName  = nameParts.slice(1).join(' ') || '';
+
       sessionStorage.setItem('leadData', JSON.stringify({
-        firstName: fn.value.trim(),
-        lastName:  ln.value.trim(),
+        firstName: firstName,
+        lastName:  lastName,
         phone:     phoneDigits
       }));
 
@@ -351,8 +350,8 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            first_name: fn.value.trim(),
-            last_name:  ln.value.trim(),
+            first_name: firstName,
+            last_name:  lastName,
             phone:      phoneDigits,
             source:     'Fort Greene BJJ Landing Page'
           })
