@@ -25,6 +25,6 @@ BOOK_SUBTEXT: "Pick a time that works for you and we'll get you booked in."
 # has placeholders for these). Obviously-fake placeholders on purpose.
 META_PIXEL_ID: "PLACEHOLDER-META-PIXEL-ID"
 TRIAL_WEBHOOK_URL: "https://PLACEHOLDER-replace-before-build"
-BOOKING_CALENDAR_URL: "https://PLACEHOLDER-replace-before-build"
+BOOKING_CALENDAR_URL: "https://api.leadconnectorhq.com/widget/group/LVz9Dko6Yy4jzIWduD98"
 
 HERO_IMAGE_FILE: "hero.jpg"
